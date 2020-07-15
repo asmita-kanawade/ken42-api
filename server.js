@@ -133,7 +133,7 @@ app.post('/save-application', async (req, res) => {
     if(application.is_draft) 
       application.access_code = '000'
     else 
-      application.access_code = Math.floor(Math.random() * 1000);
+      application.access_code = Math.floor(Math.random() * (1000 - 100 + 1) + 100);
 
     if(existingApplication.length !== 0) {
       savedApplication = await applicationsModel.findOneAndUpdate(
